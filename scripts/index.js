@@ -18,13 +18,28 @@ function back() {
 // ];
 let projectsList = []
 
+const dummyData = [
+     {
+         id:1,
+         name: "placeholder 1",
+         description: "wadhawjwjadhjkawhjdhkawjhdkjhwashduiwhaduaw",
+         img: "../src/Img_1.jpg"
+     },
+     {
+         id:2,
+         name: "placeholder 2",
+         description: "awdawudhauiwhduiawhuidhuawduiawiudhjiawjdioawiodjhioawhdioawh",
+         img: "../src/Img_2.jpg"
+     },
+]
+
 console.log(projectsList.length)
 const projects = localStorage.getItem('projects');
     if (projects){
         projectsList = JSON.parse(projects);
     }
 
-
+projectsList.push(...dummyData)
 console.log(projectsList)
 
 
@@ -35,6 +50,7 @@ console.log(projectsList)
         let projectsHTML = "";
         
         for (let i=0; i < projectsList.length; i++) {
+            
             const project = projectsList[i];
             
             let projectOverview = project.description
@@ -50,11 +66,11 @@ console.log(projectsList)
                     <p class="card-text">${intro}</p>
                     <button onclick="deleteProject(${i})" >Delete</button>
                     <button onclick="projectDetail(${i})">Detail</button>
-                        <div class="detail" id="detail">
+                        <div class="detail" id="detail${i}">
                             <div class="detailContainer">
                             <img class="imgDetail" src="${project.img}" alt="${project.img}">
                             <p>${project.description}</p>
-                            <button id="closeDetail">Close</button>
+                            <button onclick="closeDetail(${i})">Close</button>
                             </div>
                         </div>
                     </div>
@@ -109,6 +125,14 @@ function deleteProject(index) {
     renderProjects()
 }
 
-function projectDetail(){
-    console.log("test")
+function projectDetail(index) {
+    const pressed = document.getElementById(`detail${index}`)
+    pressed.classList.add("open")
+    console.log("test" + index)
+}
+
+function closeDetail(index) {
+    const pressed = document.getElementById(`detail${index}`)
+    pressed.classList.remove("open")
+    console.log("test" + index)
 }
