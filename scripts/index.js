@@ -18,7 +18,7 @@ function back() {
 // ];
 let projectsList = []
 
-for (let i=0; i < 101;i++) {
+for (let i=0; i < localStorage.length;i++) {
     const projects = localStorage.getItem(`projects${i}`);
     if (projects){
         localProject = JSON.parse(projects);
