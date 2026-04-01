@@ -2,28 +2,36 @@ function back() {
     window.location.href = "../index.html"
 }
 
-const projects = [
-    {
-        id:1,
-        name: "placeholder 1",
-        description: "wadhawjwjadhjkawhjdhkawjhdkjhwashduiwhaduaw",
-        img: "../src/Img_1.jpg"
-    },
-    {
-        id:2,
-        name: "placeholder 2",
-        description: "awdawudhauiwhduiawhuidhuawduiawiudhjiawjdioawiodjhioawhdioawh",
-        img: "../src/Img_2.jpg"
-    },
-];
+// const projects = [
+//     {
+//         id:1,
+//         name: "placeholder 1",
+//         description: "wadhawjwjadhjkawhjdhkawjhdkjhwashduiwhaduaw",
+//         img: "../src/Img_1.jpg"
+//     },
+//     {
+//         id:2,
+//         name: "placeholder 2",
+//         description: "awdawudhauiwhduiawhuidhuawduiawiudhjiawjdioawiodjhioawhdioawh",
+//         img: "../src/Img_2.jpg"
+//     },
+// ];
+let projectsList = []
+const projects = localStorage.getItem('projects');
+    if (projects){
+        projectsList = JSON.parse(projects);
+    }
+
+
+console.log(projectsList)
 
 function renderProjects() {
     const projectsContainer = document.getElementById("containerArea")
 
     let projectsHTML = "";
     
-    for (let i=0; i < projects.length; i++) {
-        const project = projects[i];
+    for (let i=0; i < projectsList.length; i++) {
+        const project = projectsList[i];
         
         projectsHTML += `
         <div class="card" id="card" style="width: 18rem;">
@@ -31,8 +39,8 @@ function renderProjects() {
               <div class="card-body">
                   <h5 class="card-title">${project.name}</h5>
                   <p class="card-text">${project.description}</p>
-                  <button>Edit</button>
-                  <button>Delete</button>
+                  <button id="detailButton">Detail</button>
+                  <button id="deleteButton" >Delete</button>
               </div>
             </div>`
     }
@@ -41,6 +49,24 @@ function renderProjects() {
 
 renderProjects();
 
+let base64String = "";
+
+        function imageUploaded() {
+            let file = document.querySelector(
+                'input[type=file]')['files'][0];
+
+            let reader = new FileReader();
+
+            reader.onload = function () {
+                base64String = reader.result
+
+                imageBase64Stringsep = base64String;
+
+                console.log(base64String);
+            }
+            reader.readAsDataURL(file);
+        }
+    
 const form = document.getElementById("myProjectForm")
 
 form.addEventListener("submit", function(event){
@@ -48,19 +74,24 @@ form.addEventListener("submit", function(event){
 
     const name = document.getElementById("projectName").value;
     const description = document.getElementById("projectDescription").value;
-    const img = document.getElementById("projectImage").files[0];
 
-    const projectImg = URL.createObjectURL(img)
-
-    console.log(projectImg)
-
-    const newProject = {
-        id: projects.length +1,
+    const newProject ={
+        id: projectsList.length +1,
         name: name,
         description: description,
-        img: projectImg
+        img: base64String
     }
 
-    projects.push(newProject);
+    projectsList.push(newProject)
+    localStorage.setItem("projects", JSON.stringify(projectsList));
+    console.log(newProject)
     renderProjects();
 })
+
+let i = 0
+
+document.getElementById("deleteButton").addEventListener("click", function() {
+projectsList.splice(i, 2);
+localStorage.setItem('projects', JSON.stringify(projectsList));
+renderProjects(); 
+});
