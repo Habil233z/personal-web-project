@@ -43,10 +43,17 @@ function renderProjects() {
               <div class="card-body">
                   <h5 class="card-title">${project.name}</h5>
                   <p class="card-text">${intro}</p>
-                  <button id="detailButton">Detail</button>
                   <button id="deleteButton" >Delete</button>
-              </div>
+                  <button id="detailButton">Detail</button>
+                    <div class="detail" id="detail">
+                        <img class="imgDetail" src="${project.img}" alt="${project.img}">
+                        <p>${project.description}</p>
+                        <button id="closeDetail">Close</button>
+                    </div>
+                </div>
+                
             </div>`
+            
     }
     projectsContainer.innerHTML = projectsHTML
 }
@@ -99,3 +106,16 @@ projectsList.splice(i, 2);
 localStorage.setItem('projects', JSON.stringify(projectsList));
 renderProjects(); 
 });
+
+
+const detaiButton = document.getElementById("detailButton")
+const closeDetail = document.getElementById("closeDetail")
+const detail = document.getElementById("detail")
+
+detaiButton.addEventListener("click", () => {
+detail.classList.add("open");
+});
+
+closeDetail.addEventListener("click", () => {
+detail.classList.remove("open")
+})
