@@ -46,9 +46,11 @@ function renderProjects() {
                   <button id="deleteButton" >Delete</button>
                   <button id="detailButton">Detail</button>
                     <div class="detail" id="detail">
+                        <div class="detailContainer">
                         <img class="imgDetail" src="${project.img}" alt="${project.img}">
                         <p>${project.description}</p>
                         <button id="closeDetail">Close</button>
+                        </div>
                     </div>
                 </div>
                 
