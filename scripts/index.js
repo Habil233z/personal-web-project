@@ -18,16 +18,15 @@ function back() {
 // ];
 let projectsList = []
 
-
-console.log(projectsList.length)
-const projects = localStorage.getItem('projects');
+for (let i=0; i < 101;i++) {
+    const projects = localStorage.getItem(`projects${i}`);
     if (projects){
         localProject = JSON.parse(projects);
-        projectsList.push(...localProject)
+        projectsList.push(localProject)
     }
+}
 
-
-console.log(projectsList)
+console.log(projectsList.length)
 
     function renderProjects() {
 
@@ -99,15 +98,17 @@ form.addEventListener("submit", function(event){
         img: base64String
     }
 
+    let index = projectsList.length
     projectsList.push(newProject)
-    localStorage.setItem("projects", JSON.stringify(projectsList));
+    localStorage.setItem(`projects${index}`, JSON.stringify(projectsList));
     console.log(newProject)
     renderProjects();
 })
 
 function deleteProject(index) {
     projectsList.splice(index, 1);
-    localStorage.setItem("projects", JSON.stringify(projectsList));
+    localStorage.removeItem(`projects${index}`);
+    console.log("delete index" + index)
     renderProjects()
 }
 
@@ -119,4 +120,10 @@ function projectDetail(index) {
 function closeDetail(index) {
     const pressed = document.getElementById(`detail${index}`)
     pressed.classList.remove("open")
+}
+
+function clearAll() {
+    localStorage.clear();
+    projectsList = []
+    renderProjects()
 }
