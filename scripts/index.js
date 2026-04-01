@@ -19,14 +19,14 @@ function back() {
 let projectsList = [    
     {
          id:1,
-         name: "placeholder 1",
-         description: "wadhawjwjadhjkawhjdhkawjhdkjhwashduiwhaduaw",
+         name: "dummy 1",
+         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis ut orci in lobortis. Vestibulum nec massa viverra, luctus mauris placerat, pharetra turpis. Ut et efficitur libero. Nam bibendum ex eu mauris posuere, cursus viverra ipsum pulvinar. In id ultrices justo. In pulvinar quis massa ac vulputate. Nunc lacinia orci quis nisi efficitur ullamcorper. Vestibulum metus tellus, tristique at pretium at, mollis non enim. Suspendisse vel nibh neque. Aliquam accumsan accumsan ipsum eu euismod. Sed et auctor erat. Sed massa purus, volutpat dignissim vulputate vitae, faucibus vel lectus. Quisque venenatis lacinia sapien, non eleifend tortor viverra a. Proin porttitor turpis at sem pulvinar condimentum. Suspendisse aliquam in metus ut fringilla. Fusce hendrerit elementum leo.",
          img: "../src/Img_1.jpg"
      },
      {
          id:2,
-         name: "placeholder 2",
-         description: "awdawudhauiwhduiawhuidhuawduiawiudhjiawjdioawiodjhioawhdioawh",
+         name: "dummy 2",
+         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget consequat sapien. Aliquam sagittis eu dui quis ornare. Vivamus in imperdiet massa. Aenean nisl leo, suscipit vel feugiat et, lobortis vel enim. Fusce rhoncus sapien sed ante bibendum suscipit. Quisque eget laoreet felis. Praesent pellentesque quam et libero varius cursush",
          img: "../src/Img_2.jpg"
      },]
 
@@ -126,11 +126,9 @@ function deleteProject(index) {
 function projectDetail(index) {
     const pressed = document.getElementById(`detail${index}`)
     pressed.classList.add("open")
-    console.log("test" + index)
 }
 
 function closeDetail(index) {
     const pressed = document.getElementById(`detail${index}`)
     pressed.classList.remove("open")
-    console.log("test" + index)
 }
