@@ -18,26 +18,10 @@ function back() {
 // ];
 let projectsList = []
 
-const dummyData = [
-        {
-         id:2,
-         name: "placeholder 1",
-         description: "wadhawjwjadhjkawhjdhkawjhdkjhwashduiwhaduaw",
-        img: "../src/Img_1.jpg"
-        },
-         {
-        id:3,
-        name: "placeholder 2",
-        description: "awdawudhauiwhduiawhuidhuawduiawiudhjiawjdioawiodjhioawhdioawh",
-        img: "../src/Img_2.jpg"
-  }
-]
-
-  console.log(projectsList.length)
+sole.log(projectsList.length)
 const projects = localStorage.getItem('projects');
     if (projects){
         projectsList = JSON.parse(projects);
-        projectsList.push(...dummyData)
     }
 
 
@@ -57,6 +41,7 @@ console.log(projectsList)
             let intro = projectOverview.slice(0, 100)
             console.log(intro)
 
+
             projectsHTML += `
             <div class="card" id="card" style="width: 18rem;">
                 <img class="card-img-top" src="${project.img}" alt="${project.img}">
@@ -73,7 +58,6 @@ console.log(projectsList)
                             </div>
                         </div>
                     </div>
-                    
                 </div>`
                 
         }projectsContainer.innerHTML = projectsHTML
@@ -124,7 +108,7 @@ form.addEventListener("submit", function(event){
     let i = 0
 
     document.getElementById("deleteButton").addEventListener("click", function() {
-    projectsList.splice(i, 2);
+    projectsList.splice(i, 3);
     localStorage.setItem('projects', JSON.stringify(projectsList));
     renderProjects(); 
     });
@@ -141,3 +125,4 @@ form.addEventListener("submit", function(event){
     closeDetail.addEventListener("click", () => {
     detail.classList.remove("open")
     })
+
