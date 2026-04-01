@@ -33,12 +33,16 @@ function renderProjects() {
     for (let i=0; i < projectsList.length; i++) {
         const project = projectsList[i];
         
+        let projectOverview = project.description
+        let intro = projectOverview.slice(0, 100)
+        console.log(intro)
+
         projectsHTML += `
         <div class="card" id="card" style="width: 18rem;">
               <img class="card-img-top" src="${project.img}" alt="${project.img}">
               <div class="card-body">
                   <h5 class="card-title">${project.name}</h5>
-                  <p class="card-text">${project.description}</p>
+                  <p class="card-text">${intro}</p>
                   <button id="detailButton">Detail</button>
                   <button id="deleteButton" >Delete</button>
               </div>
