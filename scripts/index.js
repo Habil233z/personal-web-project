@@ -18,7 +18,7 @@ function back() {
 // ];
 let projectsList = []
 
-sole.log(projectsList.length)
+console.log(projectsList.length)
 const projects = localStorage.getItem('projects');
     if (projects){
         projectsList = JSON.parse(projects);
@@ -29,7 +29,7 @@ console.log(projectsList)
 
 
     function renderProjects() {
-        if (projectsList.length !== 0) {
+
         const projectsContainer = document.getElementById("containerArea")
 
         let projectsHTML = "";
@@ -48,8 +48,8 @@ console.log(projectsList)
                 <div class="card-body">
                     <h5 class="card-title">${project.name}</h5>
                     <p class="card-text">${intro}</p>
-                    <button id="deleteButton" >Delete</button>
-                    <button id="detailButton">Detail</button>
+                    <button onclick="deleteProject(${i})" >Delete</button>
+                    <button onclick="projectDetail(${i})">Detail</button>
                         <div class="detail" id="detail">
                             <div class="detailContainer">
                             <img class="imgDetail" src="${project.img}" alt="${project.img}">
@@ -61,9 +61,7 @@ console.log(projectsList)
                 </div>`
                 
         }projectsContainer.innerHTML = projectsHTML
-    }else {
-        console.log("No Data")
-    }}
+    }
     renderProjects()
 
 let base64String = "";
@@ -105,24 +103,12 @@ form.addEventListener("submit", function(event){
     renderProjects();
 })
 
-    let i = 0
+function deleteProject(index) {
+    projectsList.splice(index, 1);
+    localStorage.setItem("projects", JSON.stringify(projectsList));
+    renderProjects()
+}
 
-    document.getElementById("deleteButton").addEventListener("click", function() {
-    projectsList.splice(i, 3);
-    localStorage.setItem('projects', JSON.stringify(projectsList));
-    renderProjects(); 
-    });
-
-
-    const detaiButton = document.getElementById("detailButton")
-    const closeDetail = document.getElementById("closeDetail")
-    const detail = document.getElementById("detail")
-
-    detaiButton.addEventListener("click", () => {
-    detail.classList.add("open");
-    });
-
-    closeDetail.addEventListener("click", () => {
-    detail.classList.remove("open")
-    })
-
+function projectDetail(){
+    console.log("test")
+}
