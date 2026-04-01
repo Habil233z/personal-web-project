@@ -16,10 +16,8 @@ function back() {
 //         img: "../src/Img_2.jpg"
 //     },
 // ];
-let projectsList = []
-
-const dummyData = [
-     {
+let projectsList = [    
+    {
          id:1,
          name: "placeholder 1",
          description: "wadhawjwjadhjkawhjdhkawjhdkjhwashduiwhaduaw",
@@ -30,16 +28,17 @@ const dummyData = [
          name: "placeholder 2",
          description: "awdawudhauiwhduiawhuidhuawduiawiudhjiawjdioawiodjhioawhdioawh",
          img: "../src/Img_2.jpg"
-     },
-]
+     },]
+
 
 console.log(projectsList.length)
 const projects = localStorage.getItem('projects');
     if (projects){
-        projectsList = JSON.parse(projects);
+        localProject = JSON.parse(projects);
+        projectsList.push(...localProject)
     }
-    
-projectsList.push(...dummyData)
+
+
 console.log(projectsList)
 
     function renderProjects() {
