@@ -38,10 +38,9 @@ const projects = localStorage.getItem('projects');
     if (projects){
         projectsList = JSON.parse(projects);
     }
-
+    
 projectsList.push(...dummyData)
 console.log(projectsList)
-
 
     function renderProjects() {
 

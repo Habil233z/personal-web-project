@@ -167,6 +167,7 @@ a:visited {
 .imgDetail {
     height:300px;
     width: 400px;
+    border: 5px solid black;
 }
 
 .detailContainer {
@@ -178,4 +179,7 @@ a:visited {
     justify-content: center;
     flex-direction: column;
     border: 5px solid black;
+    padding-left: 50px;
+    padding-right: 50px;
 }
+
