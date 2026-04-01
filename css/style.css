@@ -52,6 +52,11 @@ body {
     margin: 20px;
 }
 
+.introContainer {
+    height: 150px;
+    overflow: hidden;
+}
+
 #contactMeButton {
     background-color: #948979;
     border: 2px solid black;

@@ -19,36 +19,35 @@ function back() {
 let projectsList = []
 
 for (let i=0; i < localStorage.length;i++) {
-    const projects = localStorage.getItem(`projects${i}`);
+    const projects = localStorage.getItem(`projects`);
     if (projects){
-        localProject = JSON.parse(projects);
-        projectsList.push(localProject)
+        projectsList = JSON.parse(projects);
     }
 }
 
-console.log(projectsList.length)
+console.log(localStorage.length)
 
-    function renderProjects() {
+function renderProjects() {
+    const projectsContainer = document.getElementById("containerArea")
 
-        const projectsContainer = document.getElementById("containerArea")
-
-        let projectsHTML = "";
-        
+    let projectsHTML = "";
+    const projects = localStorage.getItem("projects")
+        if (projectsList.length === 0) {
+            console.log("No data")
+            projectsContainer.innerHTML = projectsHTML
+        } else {
         for (let i=0; i < projectsList.length; i++) {
             
             const project = projectsList[i];
-            
-            let projectOverview = project.description
-            let intro = projectOverview.slice(0, 100)
-            console.log(intro)
-
 
             projectsHTML += `
             <div class="card" id="card" style="width: 18rem;">
                 <img class="card-img-top" src="${project.img}" alt="${project.img}">
                 <div class="card-body">
                     <h5 class="card-title">${project.name}</h5>
-                    <p class="card-text">${intro}</p>
+                    <div class="introContainer">
+                        <p class="card-text">${project.description}</p>
+                    </div>
                     <button onclick="deleteProject(${i})" >Delete</button>
                     <button onclick="projectDetail(${i})">Detail</button>
                         <div class="detail" id="detail${i}">
@@ -62,7 +61,7 @@ console.log(projectsList.length)
                 </div>`
                 
         }projectsContainer.innerHTML = projectsHTML
-    }
+    }}
     renderProjects()
 
 let base64String = "";
@@ -100,14 +99,15 @@ form.addEventListener("submit", function(event){
 
     let index = projectsList.length
     projectsList.push(newProject)
-    localStorage.setItem(`projects${index}`, JSON.stringify(projectsList));
+    localStorage.setItem(`projects`, JSON.stringify(projectsList));
     console.log(newProject)
+    console.log(projectsList)
     renderProjects();
 })
 
 function deleteProject(index) {
     projectsList.splice(index, 1);
-    localStorage.removeItem(`projects${index}`);
+    localStorage.setItem(`projects`, JSON.stringify(projectsList));
     console.log("delete index" + index)
     renderProjects()
 }
