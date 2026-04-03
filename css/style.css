@@ -44,9 +44,15 @@ body {
     border: 10px solid #948979;
 }
 
+.filterArea {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
 #card{
     border: 3px solid black;
     margin-left: 5%;
+    width: 18rem;
 }
 
 .pContainer {
@@ -137,11 +143,12 @@ a:visited {
 
 #projectDescription {
     width: 100%;
-    height: 300px;
+    height: 200px;
 }
 
 #submitButton {
-    margin-top: 50px;
+    display: flex;
+    justify-self: end;
 }
 
 #containerArea {

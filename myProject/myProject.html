@@ -42,12 +42,22 @@
                     <input type="text" id="projectName">
                 <h2>Description</h2>
                     <input type="text" id="projectDescription">
+                <h2>Tag</h2>
+                    <input type="text" id="projectTag">
+                <div class="imgUpload">
+                <h2>images</h2>
                 <input type="file" name="" id="fileId" onchange="imageUploaded()">
+                </div>
                 <button type="submit" id="submitButton">submit</button>
             </form>
             <button onclick="clearAll()" id="clearAllButton">clear all</button>
     </div>
     <div class="myProjectContainer">
+        <div class="filterArea">
+            <h2>Filter by Tag</h2>
+            <input type="text" id="filterTag">
+            <button onclick="filterProjects()">Filter</button>
+        </div>
         <div id="containerArea">
         </div>
     </div>
