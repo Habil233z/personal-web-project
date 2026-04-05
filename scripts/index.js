@@ -84,8 +84,7 @@ form.addEventListener("submit", function(event){
 
     const name = document.getElementById("projectName").value;
     const description = document.getElementById("projectDescription").value;
-    const tagRaw = document.getElementById("projectTag").value;
-    const tag = tagRaw.toLowerCase()
+    const tag = document.getElementById("projectTag").value;
 
     const newProject ={
         id: projectsList.length +1,
@@ -94,13 +93,16 @@ form.addEventListener("submit", function(event){
         description: description,
         img: base64String
     }
-
-    projectsList.push(newProject)
-    localStorage.setItem(`projects`, JSON.stringify(projectsList));
-    console.log(newProject)
-    console.log(projectsList)
-    document.getElementById("containerArea").innerHTML = ""
-    projectsList.map(renderProject).forEach(card=> projectsContainer.appendChild(card))
+    if (tag== "none") {
+        alert("No tag has been selected")
+    } else {
+        projectsList.push(newProject)
+        localStorage.setItem(`projects`, JSON.stringify(projectsList));
+        console.log(newProject)
+        console.log(projectsList)
+        document.getElementById("containerArea").innerHTML = ""
+        projectsList.map(renderProject).forEach(card=> projectsContainer.appendChild(card))
+    }
 })
 
 function deleteProject(index) {
@@ -130,12 +132,13 @@ function clearAll() {
 
 function filterProjects() {
     let filterProjects = []
-    const rawDesiredTag = document.getElementById("filterTag").value;
-    const desiredTag = rawDesiredTag.toLowerCase()
-    filterProjects = projectsList.filter(val => val.tag.includes(desiredTag))
-    
-    console.log(filterProjects)
-    document.getElementById("containerArea").innerHTML = ""
-    filterProjects.map(renderProject).forEach(card=> projectsContainer.appendChild(card))
-    
+    const desiredTag = document.getElementById("filterTag").value;
+    if (desiredTag== "none") {
+        alert("No tag has been selected")
+    } else {
+        filterProjects = projectsList.filter(val => val.tag.includes(desiredTag))
+        document.getElementById("containerArea").innerHTML = ""
+        filterProjects.map(renderProject).forEach(card=> projectsContainer.appendChild(card))
+        console.log(filterProjects)
+    }
 }

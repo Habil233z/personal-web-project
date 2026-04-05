@@ -43,7 +43,13 @@
                 <h2>Description</h2>
                     <input type="text" id="projectDescription">
                 <h2>Tag</h2>
-                    <input type="text" id="projectTag">
+                    <select id="projectTag">
+                        <option value="none">None</option>
+                        <option value="technology">Technology</option>
+                        <option value="sport">Sport</option>
+                        <option value="construction">Construction</option>
+                        <option value="decoration">decoration</option>
+                    </select>
                 <div class="imgUpload">
                 <h2>images</h2>
                 <input type="file" name="" id="fileId" onchange="imageUploaded()">
@@ -55,7 +61,13 @@
     <div class="myProjectContainer">
         <div class="filterArea">
             <h2>Filter by Tag</h2>
-            <input type="text" id="filterTag">
+                 <select id="filterTag">
+                    <option value="none">None</option>
+                    <option value="technology">Technology</option>
+                    <option value="sport">Sport</option>
+                    <option value="construction">Construction</option>
+                    <option value="decoration">decoration</option>
+                </select>
             <button onclick="filterProjects()">Filter</button>
         </div>
         <div id="containerArea">
