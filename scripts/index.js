@@ -46,15 +46,16 @@ function renderProject(project, index) {
                 </div>
                     <button onclick="deleteProject(${index})" >Delete</button>
                     <button onclick="projectDetail(${index})">Detail</button>
+                    <h6>tag:${project.tag}</h6>
                     <div class="detail" id="detail${index}">
-                    <div class="detailContainer">
-                    <img class="imgDetail" src="${project.img}" alt="${project.img}">
-                    <h2>${project.name}</h2>
-                    <p>${project.description}</p>
-                    <button onclick="closeDetail(${index})">Close</button>
+                        <div class="detailContainer">
+                        <img class="imgDetail" src="${project.img}" alt="${project.img}">
+                        <h2>${project.name}</h2>
+                        <p>${project.description}</p>
+                        <button onclick="closeDetail(${index})">Close</button>
+                    </div>
                 </div>
-            </div>
-        </div>`;
+            </div>`;
         return card}
 
 
