@@ -134,7 +134,8 @@ function filterProjects() {
     let filterProjects = []
     const desiredTag = document.getElementById("filterTag").value;
     if (desiredTag== "none") {
-        alert("No tag has been selected")
+        document.getElementById("containerArea").innerHTML = ""
+        projectsList.map(renderProject).forEach(card=> projectsContainer.appendChild(card))
     } else {
         filterProjects = projectsList.filter(val => val.tag.includes(desiredTag))
         document.getElementById("containerArea").innerHTML = ""
