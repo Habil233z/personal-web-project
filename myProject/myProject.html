@@ -60,14 +60,13 @@
     <div class="myProjectContainer">
         <div class="filterArea">
             <h2>Filter by Tag</h2>
-                 <select id="filterTag">
+                 <select id="filterTag" onchange="filterProjects()">
                     <option value="none">None</option>
                     <option value="technology">Technology</option>
                     <option value="sport">Sport</option>
                     <option value="construction">Construction</option>
                     <option value="decoration">decoration</option>
                 </select>
-            <button onclick="filterProjects()">Filter</button>
         </div>
         <div id="containerArea">
         </div>

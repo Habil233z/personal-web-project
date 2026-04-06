@@ -49,6 +49,7 @@ function renderProject(project, index) {
                     <div class="detail" id="detail${index}">
                     <div class="detailContainer">
                     <img class="imgDetail" src="${project.img}" alt="${project.img}">
+                    <h2>${project.name}</h2>
                     <p>${project.description}</p>
                     <button onclick="closeDetail(${index})">Close</button>
                 </div>
