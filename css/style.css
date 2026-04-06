@@ -121,11 +121,6 @@ a:visited {
     justify-self: center;
 }
 
-#containerArea {
-    display: flex;
-    justify-content: space-between;
-}
-
 .backButton {
     margin-top: 50px;
     margin-left: 50px;
@@ -154,7 +149,7 @@ a:visited {
 #containerArea {
     margin-top: 50px;
     justify-content: center;
-    margin-right: 5%;
+    justify-self: center;
     display: grid;
     grid-template-columns: auto auto auto;
     row-gap: 30px;
